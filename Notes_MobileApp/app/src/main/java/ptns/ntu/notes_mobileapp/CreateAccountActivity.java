@@ -82,13 +82,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                         changeInProgress(false);
                         if(task.isSuccessful()){
                             //tao tk hoan tat
-                            Toast.makeText(CreateAccountActivity.this,"Succesfully create account,Check email to verify",Toast.LENGTH_LONG).show();
+                            notification.shawToast(CreateAccountActivity.this,"Succesfully create account,Check email to verify");
+                            //Toast.makeText(CreateAccountActivity.this,"Succesfully create account,Check email to verify",Toast.LENGTH_LONG).show();
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
                         }else{
                             //that bai
-                            Toast.makeText(CreateAccountActivity.this,task.getException().getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                            notification.shawToast(CreateAccountActivity.this,task.getException().getLocalizedMessage());
+                            //Toast.makeText(CreateAccountActivity.this,task.getException().getLocalizedMessage(),Toast.LENGTH_LONG).show();
                         }
                     }
                 }

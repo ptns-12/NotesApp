@@ -71,7 +71,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
                     notification.shawToast(NoteDetailsActivity.this, "Note added successfully");
                     finish();  //them thanh cong quay lai trang chinh
                 }else{
-                    notification.shawToast(NoteDetailsActivity.this, "Note added successfully");
+                    notification.shawToast(NoteDetailsActivity.this, "Failed while adding note");
                 }
             }
         });

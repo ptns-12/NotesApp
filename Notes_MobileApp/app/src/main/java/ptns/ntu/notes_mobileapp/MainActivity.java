@@ -28,6 +28,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         addNoteBtn = findViewById(R.id.add_note_btn);
-        addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,)));
+        addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,NoteDetailsActivity.class)));
     }
 }

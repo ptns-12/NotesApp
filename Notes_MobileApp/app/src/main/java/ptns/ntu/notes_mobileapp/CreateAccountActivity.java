@@ -51,6 +51,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
+
+        boolean isValidated = validateData(email,password,confirmPassword);
+
     }
 
     //phuong thuc tra ve dung hay sai
@@ -65,6 +68,12 @@ public class CreateAccountActivity extends AppCompatActivity {
             passwordEditText.setError("Password length is invalid");
             return false;
         }
+        //kiem tra mat khau co giong nhau hay khong
+        if(!password.equals(confirmPassword)){
+            confirmPasswordEditText.setError("Password not matched");
+            return false;
+        }
+        return true;
     }
 
 }

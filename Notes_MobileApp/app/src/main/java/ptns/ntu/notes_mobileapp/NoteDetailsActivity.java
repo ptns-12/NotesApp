@@ -42,6 +42,6 @@ public class NoteDetailsActivity extends AppCompatActivity {
             titleEditText.setError("Title is required");
             return;
         }
-        
+
     }
 }

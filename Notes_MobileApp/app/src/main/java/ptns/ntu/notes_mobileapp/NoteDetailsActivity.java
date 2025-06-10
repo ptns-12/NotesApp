@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 
 import java.lang.annotation.Documented;
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 

@@ -1,6 +1,6 @@
 package ptns.ntu.notes_mobileapp;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 //du lieu ghi chu
 public class Note {

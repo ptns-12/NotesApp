@@ -5,10 +5,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+
+import java.lang.annotation.Documented;
+import java.sql.Timestamp;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
@@ -42,6 +50,31 @@ public class NoteDetailsActivity extends AppCompatActivity {
             titleEditText.setError("Title is required");
             return;
         }
+        //tao lop
+        Note note = new Note();
+        note.setTitle(noteTitle);
+        note.setContent(noteContent);
+        note.setTimestamp(Timestamp.now());
+
+        saveNoteToFirebase(note);
+    }
+    //ghi chu cua tung acc
+    void saveNoteToFirebase(Note note){
+        DocumentReference documentReference;
+        documentReference = notification.getCollectionReferenceForNotes().document();
+
+        documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //ghi chu da them
+                    notification.shawToast(NoteDetailsActivity.this, "Note added successfully");
+                    finish();  //them thanh cong quay lai trang chinh
+                }else{
+                    notification.shawToast(NoteDetailsActivity.this, "Note added successfully");
+                }
+            }
+        });
 
     }
 }

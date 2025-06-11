@@ -31,7 +31,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:id="@+id/save_note_btn"
-            android:src="@drawable/baseline_done_24"
+            android:src="@drawable/baseline_density_medium_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             app:tint="@color/white"

@@ -49,13 +49,17 @@ public class NoteDetailsActivity extends AppCompatActivity {
         content = getIntent().getStringExtra("content");
         docId = getIntent().getStringExtra("docId");
 
-        //che do chinh sua true
+        //che do chinh noi dung chi tiet trong note sua true
         if(docId!=null && !docId.isEmpty()){
             isEditMode = true;
         }
 
         titleEditText.setText(title);
         contentEditText.setText(content);
+
+        if(isEditMode){
+            pageTitleTextView.setText("Edit your note");
+        }
 
         saveNoteBtn.setOnClickListener((v)-> saveNote());
     }

@@ -26,7 +26,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
     TextView pageTitleTextView; // tieu de
     String title,content,docId;
     boolean isEditMode = false;
-
+    TextView deleteNoteTextViewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         contentEditText = findViewById(R.id.notes_content_text);
         saveNoteBtn = findViewById(R.id.save_note_btn);
         pageTitleTextView = findViewById(R.id.page_title);
+        deleteNoteTextViewBtn = findViewById(R.id.delete_note_text_view_btn);
 
         //nhan du lieu
         title = getIntent().getStringExtra("title");
@@ -54,14 +55,18 @@ public class NoteDetailsActivity extends AppCompatActivity {
             isEditMode = true;
         }
 
+
         titleEditText.setText(title);
         contentEditText.setText(content);
 
         if(isEditMode){
             pageTitleTextView.setText("Edit your note");
+            deleteNoteTextViewBtn.setVisibility(TextView.VISIBLE);
         }
 
         saveNoteBtn.setOnClickListener((v)-> saveNote());
+
+        deleteNoteTextViewBtn.setOnClickListener((v)->deleteNoteFromFirebase());
     }
     //luu nut ghi chu
     void saveNote(){
@@ -107,5 +112,25 @@ public class NoteDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    void deleteNoteFromFirebase(){
+        DocumentReference documentReference;
+
+            //neu vo chinh sua thi se cap nhat ghi chu
+        documentReference = notification.getCollectionReferenceForNotes().document(docId);
+
+        documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    //ghi chu da xoa
+                    notification.shawToast(NoteDetailsActivity.this, "Note deleted successfully");
+                    finish();  //them thanh cong quay lai trang chinh
+                }else{
+                    notification.shawToast(NoteDetailsActivity.this, "Failed while deleting note");
+                }
+            }
+        });
     }
 }

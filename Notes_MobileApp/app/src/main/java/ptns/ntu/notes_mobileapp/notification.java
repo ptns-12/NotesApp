@@ -24,6 +24,7 @@ public class notification {
     }
 
     //ghi chu cua tung ng id nguoi dung
+    //noi luu tru cac ghi chu
     static CollectionReference getCollectionReferenceForNotes(){
         //nguoi dung hien tai
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();

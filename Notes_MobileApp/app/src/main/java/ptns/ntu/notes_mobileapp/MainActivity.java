@@ -63,4 +63,25 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(noteAdapter);
     }
 
+    //khi bat dau
+    @Override
+    protected void onStart() {
+        super.onStart();
+        noteAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        noteAdapter.startListening();
+    }
+
+    //khi chuyen den trang ghi chu quay lai cap nhat
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        noteAdapter.notifyDataSetChanged();
+    }
 }

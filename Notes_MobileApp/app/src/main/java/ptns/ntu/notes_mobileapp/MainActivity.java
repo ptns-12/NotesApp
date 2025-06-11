@@ -36,5 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         addNoteBtn.setOnClickListener((v)-> startActivity(new Intent(MainActivity.this,NoteDetailsActivity.class)));
+        //show menu
+        menuBtn.setOnClickListener((v)->showmenu());
+        setupRecyclerView();
     }
+
+    void showmenu(){
+        //hien thi menu
+
+    }
+
+    void setupRecyclerView(){
+        
+    }
+
 }

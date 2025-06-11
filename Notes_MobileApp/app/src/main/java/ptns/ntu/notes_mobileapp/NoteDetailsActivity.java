@@ -81,9 +81,18 @@ public class NoteDetailsActivity extends AppCompatActivity {
         saveNoteToFirebase(note);
     }
     //ghi chu cua tung acc
+    //
     void saveNoteToFirebase(Note note){
         DocumentReference documentReference;
-        documentReference = notification.getCollectionReferenceForNotes().document();
+        //neu chinh sua
+        if(isEditMode){
+            //neu vo chinh sua thi se cap nhat ghi chu
+            documentReference = notification.getCollectionReferenceForNotes().document(docId);
+        }else{
+            //neu kg phai chinh sua thi tao ghi chu moi
+            documentReference = notification.getCollectionReferenceForNotes().document();
+        }
+
 
         documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

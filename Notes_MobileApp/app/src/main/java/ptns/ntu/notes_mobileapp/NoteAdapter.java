@@ -25,9 +25,9 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
     protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull Note note) {
         holder.titleTextView.setText(note.title);
         holder.contentTextView.setText(note.content);
-        holder.timestampTextView.setText(note.timestamp);
+        holder.timestampTextView.setText(notification.timestampToString(note.timestamp));
     }
-    
+
     //tao tra ve view
     @NonNull
     @Override

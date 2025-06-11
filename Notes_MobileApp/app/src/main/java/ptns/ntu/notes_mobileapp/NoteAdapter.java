@@ -27,7 +27,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         holder.titleTextView.setText(note.title);
         holder.contentTextView.setText(note.content);
         holder.timestampTextView.setText(notification.timestampToString(note.timestamp));
-        //khi vao chi tiet ghi chu se duoc xoa sua, hien thi noi dung ghi chu 
+        //khi vao chi tiet ghi chu se duoc xoa sua, hien thi noi dung ghi chu
         holder.itemView.setOnClickListener((v)->{
             Intent intent = new Intent(context,NoteDetailsActivity.class);
                     //moi note co mot id duy nhat

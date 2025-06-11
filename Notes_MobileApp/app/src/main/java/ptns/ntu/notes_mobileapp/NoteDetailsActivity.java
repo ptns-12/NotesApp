@@ -3,6 +3,7 @@ package ptns.ntu.notes_mobileapp;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     EditText titleEditText,contentEditText;
     ImageButton saveNoteBtn;
+    TextView pageTitleTextView; // tieu de
+    String title,content,docId;
 
 
     @Override
@@ -38,6 +41,15 @@ public class NoteDetailsActivity extends AppCompatActivity {
         titleEditText = findViewById(R.id.notes_title_text);
         contentEditText = findViewById(R.id.notes_content_text);
         saveNoteBtn = findViewById(R.id.save_note_btn);
+        pageTitleTextView = findViewById(R.id.page_title);
+
+        //nhan du lieu
+        title = getIntent().getStringExtra("title");
+        content = getIntent().getStringExtra("content");
+        docId = getIntent().getStringExtra("docId");
+
+        titleEditText.setText(title);
+        contentEditText.setText(content);
 
         saveNoteBtn.setOnClickListener((v)-> saveNote());
     }

@@ -1,5 +1,7 @@
 package ptns.ntu.notes_mobileapp;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -8,22 +10,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.NoteViewHolder> {
 
+    Context context;
 
-    @Override
-    protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull Note model) {
-
+    public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options, Context context) {
+        super(options);
+        this.context = context;
     }
 
+    @Override
+    protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull Note note) {
+        holder.titleTextView.setText(note.title);
+        holder.contentTextView.setText(note.content);
+        holder.timestampTextView.setText(note.timestamp);
+    }
+    
+    //tao tra ve view
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_note_item,parent,false);
+        return new NoteViewHolder(view);
     }
 
-    
+
     //ke thua tu recyclerview.viewholder
     class NoteViewHolder extends RecyclerView.ViewHolder{
 

@@ -25,6 +25,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
     ImageButton saveNoteBtn;
     TextView pageTitleTextView; // tieu de
     String title,content,docId;
+    boolean isEditMode = false;
 
 
     @Override
@@ -47,6 +48,11 @@ public class NoteDetailsActivity extends AppCompatActivity {
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
         docId = getIntent().getStringExtra("docId");
+
+        //che do chinh sua true
+        if(docId!=null && !docId.isEmpty()){
+            isEditMode = true;
+        }
 
         titleEditText.setText(title);
         contentEditText.setText(content);

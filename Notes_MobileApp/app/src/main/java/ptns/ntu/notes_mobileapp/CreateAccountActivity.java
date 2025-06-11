@@ -84,7 +84,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             //tao tk hoan tat
                             notification.shawToast(CreateAccountActivity.this,"Succesfully create account,Check email to verify");
                             //Toast.makeText(CreateAccountActivity.this,"Succesfully create account,Check email to verify",Toast.LENGTH_LONG).show();
-                            firebaseAuth.getCurrentUser().sendEmailVerification();
+                            //firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
                         }else{
